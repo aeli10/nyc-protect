@@ -8,9 +8,7 @@
 </head>
 <body>
 
-  <div class="disclaimer-banner">
-    This is an internal reference page for building the site — not a public page. NYC Protect is independent and not affiliated with NYPD, NYC, or NYS.
-  </div>
+  <div id="site-header"></div>
 
   <div class="container stack" style="padding-top: 32px; padding-bottom: 64px;">
 
@@ -57,13 +55,16 @@
       <p>This box you're reading right now <em>is</em> a card — a raised surface used to group related content. Most of the site's content will live inside cards like this one.</p>
     </div>
 
-    <!-- DISCLAIMER BANNER -->
+    <!-- NAV + DISCLAIMER BANNER + FOOTER -->
     <div class="card">
-      <h2>Disclaimer Banner</h2>
-      <p class="text-muted">The strip at the very top of this page is the disclaimer banner. It will appear on every page of the real site, unchanged, so independence from NYPD/NYC/NYS is always visible.</p>
+      <h2>Shared Shell</h2>
+      <p class="text-muted">The disclaimer banner and nav bar above, and the footer below, aren't written on this page at all — they're injected by <code>js/main.js</code> into the <code>#site-header</code> and <code>#site-footer</code> placeholders. Edit them once, and every page updates.</p>
     </div>
 
   </div>
 
+  <div id="site-footer"></div>
+
+  <script src="js/main.js"></script>
 </body>
 </html>

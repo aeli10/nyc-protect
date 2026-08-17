@@ -102,6 +102,15 @@ body {
   font-size: var(--fs-base);
   line-height: var(--lh-base);
   -webkit-font-smoothing: antialiased;
+
+  /* "Sticky footer" layout: stack header/main/footer vertically
+     and force the body to be at least the full screen height, so
+     the footer always sits at the bottom of the screen even when
+     a page's content is short — never floating awkwardly in the
+     middle. */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Headings all share the amber accent and consistent spacing */
@@ -150,10 +159,13 @@ a {
   padding: 0 var(--space-5);
 }
 
-/* .page-center vertically centers a single block of content —
-   handy for simple pages like our current hello-world page. */
+/* .page-center vertically centers a single block of content.
+   "flex: 1 0 auto" tells it to grow and fill whatever space is
+   left between the header and footer (rather than 100vh, which
+   would now be too tall since the header/footer take up their
+   own room too). */
 .page-center {
-  min-height: 100vh;
+  flex: 1 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -185,6 +197,48 @@ a {
 .disclaimer-banner a {
   color: var(--color-banner-text);
   text-decoration: underline;
+}
+
+
+/* -----------------------------------------------------------
+   COMPONENT: Site Navigation
+   Currently just the "NYC Protect" home link. Built as a flex
+   row with space-between so we can add more links (Roadmap,
+   Checklist, etc.) on the right side later without restructuring
+   anything.
+   ----------------------------------------------------------- */
+.site-nav {
+  padding: var(--space-4) 0;
+}
+
+.site-nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.site-nav__brand {
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  color: var(--color-text);
+  text-decoration: none;
+}
+.site-nav__brand:hover {
+  color: var(--color-accent);
+}
+
+
+/* -----------------------------------------------------------
+   COMPONENT: Site Footer
+   Appears at the bottom of every page, restating our
+   independence from NYPD/NYC/NYS and that this isn't legal
+   advice — a permanent, unmissable safety net.
+   ----------------------------------------------------------- */
+.site-footer {
+  flex: 0 0 auto;
+  border-top: 1px solid var(--color-border);
+  padding: var(--space-6) 0 var(--space-7);
+  margin-top: var(--space-8);
 }
 
 
