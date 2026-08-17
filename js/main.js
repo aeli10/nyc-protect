@@ -32,17 +32,27 @@ const SITE_HEADER_HTML = `
     NYC Protect is an independent educational resource. We are not affiliated with the NYPD, New York City, or New York State.
   </div>
   <header class="site-nav">
-    <div class="container site-nav__inner">
+    <div class="container--wide site-nav__inner">
       <a href="index.html" class="site-nav__brand">NYC Protect</a>
+      <ul class="site-nav__links">
+        <li><a href="start-here.html">Start Here</a></li>
+        <li><a href="roadmap.html">Roadmap</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
     </div>
   </header>
 `;
 
 const SITE_FOOTER_HTML = `
   <footer class="site-footer">
-    <div class="container stack">
+    <div class="container--wide stack">
       <p><strong>NYC Protect is independent.</strong> We are not affiliated with, endorsed by, or acting on behalf of the NYPD, the City of New York, New York State, or any government agency. Official government sources always control — when in doubt, verify directly with them.</p>
       <p class="text-muted">This site is for educational and administrative purposes only. It is not legal advice.</p>
+      <ul class="site-footer__links">
+        <li><a href="about.html">About &amp; Disclaimer</a></li>
+        <li><a href="legal-concepts.html">Legal &amp; Safety Concepts</a></li>
+        <li><a href="resources.html">Official Resources</a></li>
+      </ul>
       <p class="text-muted">&copy; 2026 NYC Protect</p>
     </div>
   </footer>

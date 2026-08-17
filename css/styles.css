@@ -159,11 +159,38 @@ a {
   padding: 0 var(--space-5);
 }
 
-/* .page-center vertically centers a single block of content.
-   "flex: 1 0 auto" tells it to grow and fill whatever space is
-   left between the header and footer (rather than 100vh, which
-   would now be too tall since the header/footer take up their
-   own room too). */
+/* A wider variant for homepage sections that use multi-column
+   grids (trust strip, feature tiles) — text-heavy pages like the
+   style guide stay at the narrower, easier-to-read width. */
+.container--wide {
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 var(--space-5);
+}
+
+/* A visually distinct horizontal band, used to break the
+   homepage into readable sections. --alt swaps to the slightly
+   lighter surface color so sections alternate instead of
+   blurring together. */
+.section {
+  padding: var(--space-7) 0;
+}
+.section--alt {
+  background-color: var(--color-surface);
+}
+
+/* Every page's <main> fills whatever space is left between the
+   header and footer, so short pages still push the footer all
+   the way to the bottom of the screen (the "sticky footer"
+   layout mentioned above). */
+main {
+  flex: 1 0 auto;
+}
+
+/* .page-center vertically centers a single block of content —
+   for simple pages (like our placeholder pages) that are just
+   one card in the middle of the screen. */
 .page-center {
   flex: 1 0 auto;
   display: flex;
@@ -222,9 +249,41 @@ a {
   font-weight: 700;
   color: var(--color-text);
   text-decoration: none;
+  white-space: nowrap;
 }
 .site-nav__brand:hover {
   color: var(--color-accent);
+}
+
+.site-nav__links {
+  display: flex;
+  gap: var(--space-5);
+  list-style: none;
+  /* On a narrow phone screen, let the links scroll sideways
+     instead of wrapping into a cramped multi-line mess. */
+  overflow-x: auto;
+}
+.site-nav__links a {
+  color: var(--color-text);
+  text-decoration: none;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.site-nav__links a:hover {
+  color: var(--color-accent);
+}
+
+.site-footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  list-style: none;
+  padding-top: var(--space-2);
+}
+.site-footer__links a {
+  color: var(--color-text-muted);
+  font-size: var(--fs-sm);
 }
 
 
@@ -297,4 +356,167 @@ a {
 }
 .btn-secondary:hover {
   background-color: var(--color-surface-alt);
+}
+
+
+/* -----------------------------------------------------------
+   COMPONENT: Hero
+   The big introduction at the top of the homepage. "clamp()"
+   makes the headline scale smoothly between a minimum and
+   maximum size as the screen gets wider — big and bold on a
+   monitor, never oversized on a phone.
+   ----------------------------------------------------------- */
+.hero {
+  text-align: center;
+  padding: var(--space-7) 0 var(--space-6);
+}
+.hero__title {
+  font-size: clamp(1.75rem, 5vw, 2.75rem);
+  margin-bottom: var(--space-4);
+}
+.hero__subtitle {
+  color: var(--color-text-muted);
+  font-size: var(--fs-lg);
+  max-width: 560px;
+  margin: 0 auto var(--space-6);
+}
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  justify-content: center;
+}
+
+
+/* -----------------------------------------------------------
+   COMPONENT: Trust Strip
+   Short reassurances with a simple icon — free, no account,
+   local-only data, sourced claims.
+   ----------------------------------------------------------- */
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--space-5);
+}
+.trust-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-2);
+}
+.trust-item__icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--color-accent);
+  color: var(--color-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.trust-item__label {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+}
+
+
+/* -----------------------------------------------------------
+   COMPONENT: Feature Grid
+   The tiles linking to each tool (Roadmap, Checklist, etc).
+   Reuses .card, so tiles automatically match every other card
+   on the site.
+   ----------------------------------------------------------- */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-5);
+}
+.feature-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.feature-card h3 {
+  margin-bottom: 0;
+}
+.feature-card p {
+  color: var(--color-text-muted);
+  flex-grow: 1;
+}
+.feature-card a {
+  font-weight: 600;
+  text-decoration: none;
+}
+.feature-card a:hover {
+  text-decoration: underline;
+}
+
+
+/* -----------------------------------------------------------
+   COMPONENT: How It Works (steps)
+   ----------------------------------------------------------- */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-6);
+  text-align: center;
+}
+.step-item__number {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto var(--space-3);
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  color: #1A1200;
+  font-weight: 700;
+  font-size: var(--fs-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.step-item p {
+  color: var(--color-text-muted);
+}
+
+
+/* -----------------------------------------------------------
+   COMPONENT: FAQ accordion
+   Uses the native HTML <details>/<summary> elements — this gives
+   us a fully working, accessible, keyboard-friendly accordion
+   with ZERO JavaScript. The browser does all the work.
+   ----------------------------------------------------------- */
+.faq-item {
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--space-4) 0;
+}
+.faq-item summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: var(--fs-lg);
+}
+.faq-item summary::marker {
+  color: var(--color-accent);
+}
+.faq-item p {
+  margin-top: var(--space-3);
+  color: var(--color-text-muted);
+}
+
+
+/* -----------------------------------------------------------
+   COMPONENT: Official Resources Callout
+   A visually distinct box pointing straight at the government
+   sources that actually govern this process.
+   ----------------------------------------------------------- */
+.resource-callout {
+  border: 2px solid var(--color-accent);
+}
+.resource-callout ul {
+  margin-top: var(--space-3);
+  padding-left: var(--space-5);
+}
+.resource-callout li {
+  margin-bottom: var(--space-2);
 }
