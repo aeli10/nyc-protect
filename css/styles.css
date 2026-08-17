@@ -1,54 +1,246 @@
-/* ===========================================
-   NYC Protect — Step 1 starter styles
-   This file controls how the page LOOKS.
-   =========================================== */
+/* ===========================================================
+   NYC Protect — Design System
+   -----------------------------------------------------------
+   This file has two parts:
+     1) TOKENS  — the raw design values (colors, sizes, spacing)
+                  stored once as "CSS variables."
+     2) COMPONENTS — reusable page pieces (buttons, cards, etc.)
+                      built FROM those tokens.
 
-/* Reset a few browser defaults so all browsers start from the same baseline */
+   The rule going forward: never write a raw color or size again.
+   Always reach for a variable (like var(--color-accent)) or a
+   component class (like .btn-primary). Change a token once here,
+   and every page that uses it updates automatically.
+   =========================================================== */
+
+
+/* -----------------------------------------------------------
+   1) TOKENS
+   ":root" means "the whole document." Anything defined here,
+   starting with "--", is a variable we can reuse anywhere with
+   var(--name-of-variable).
+   ----------------------------------------------------------- */
+:root {
+
+  /* --- Color palette ---
+     Deep navy + warm amber: calm and trustworthy, and
+     deliberately NOT NYPD blue-and-gold, so nothing here is
+     ever mistaken for an official government color scheme. */
+  --color-bg:          #0B1B2B; /* page background */
+  --color-surface:     #12283F; /* cards, panels */
+  --color-surface-alt: #1A3653; /* hover / slightly-raised surface */
+  --color-border:      rgba(255, 255, 255, 0.12);
+
+  --color-text:        #F4F6F8; /* main text on dark background */
+  --color-text-muted:  #9FB0C3; /* secondary/small text */
+
+  --color-accent:      #FFB347; /* amber — primary buttons, headings, highlights */
+  --color-accent-dark: #E0993A; /* amber, darker — hover state */
+
+  --color-banner-bg:   #1F2E1A; /* muted, low-alarm background for the disclaimer banner */
+  --color-banner-text: #D9E6C9;
+
+  /* --- Typography scale ---
+     "rem" units are relative to the browser's base font size,
+     which respects a user's accessibility settings (someone who
+     has increased their default text size gets bigger text here
+     too — using "px" instead would ignore that). */
+  --font-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  --fs-sm:   0.875rem;  /* small print */
+  --fs-base: 1.05rem;   /* body text */
+  --fs-lg:   1.25rem;   /* subheadings */
+  --fs-xl:   1.75rem;   /* h2 */
+  --fs-2xl:  2.25rem;   /* h1 */
+
+  --lh-base: 1.6; /* line-height: comfortable reading, good for accessibility */
+
+  /* --- Spacing scale ---
+     Using a consistent set of spacing values (instead of random
+     numbers everywhere) is what makes a site LOOK designed
+     instead of thrown together. */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+
+  /* --- Shape & shadow --- */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.35);
+
+  /* --- Minimum tap target size ---
+     Apple/Google/W3C accessibility guidelines all recommend at
+     least 44px so buttons are easy to tap on a phone. */
+  --tap-target: 44px;
+}
+
+
+/* -----------------------------------------------------------
+   RESET & BASE
+   A few browser defaults reset so all browsers start the same.
+   ----------------------------------------------------------- */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+html {
+  /* Smooth scrolling when jumping to an in-page link (e.g. FAQ anchors) */
+  scroll-behavior: smooth;
+}
+
 body {
-  /* System font stack: uses the clean native font already on the
-     user's device (fast, accessible, no downloads needed) */
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: var(--font-base);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-size: var(--fs-base);
+  line-height: var(--lh-base);
+  -webkit-font-smoothing: antialiased;
+}
 
-  /* A deep navy background — trustworthy, calm, NYC-at-night feeling */
-  background-color: #0B1B2B;
-  color: #F4F6F8;
+/* Headings all share the amber accent and consistent spacing */
+h1, h2, h3 {
+  color: var(--color-accent);
+  line-height: 1.25;
+  margin-bottom: var(--space-4);
+}
+h1 { font-size: var(--fs-2xl); }
+h2 { font-size: var(--fs-xl); }
+h3 { font-size: var(--fs-lg); }
 
-  /* Center the card both vertically and horizontally, on any screen size */
+p {
+  margin-bottom: var(--space-3);
+}
+
+.text-muted {
+  color: var(--color-text-muted);
+  font-size: var(--fs-sm);
+}
+
+a {
+  color: var(--color-accent);
+}
+
+/* Accessibility: a strong, visible outline for anyone navigating
+   by keyboard (Tab key) instead of a mouse. Never remove this —
+   it's one of the most important accessibility features on a site. */
+:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+
+/* -----------------------------------------------------------
+   LAYOUT HELPERS
+   ----------------------------------------------------------- */
+
+/* .container centers content and keeps it from stretching too
+   wide on a big desktop monitor, while staying full-width and
+   padded on a phone (mobile-first). */
+.container {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 var(--space-5);
+}
+
+/* .page-center vertically centers a single block of content —
+   handy for simple pages like our current hello-world page. */
+.page-center {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px; /* breathing room on small phone screens */
+  padding: var(--space-5);
 }
 
-.hello-card {
-  max-width: 480px;
+.stack > * + * {
+  /* Adds consistent spacing BETWEEN stacked elements without
+     needing margin on every single one individually. */
+  margin-top: var(--space-4);
+}
+
+
+/* -----------------------------------------------------------
+   COMPONENT: Disclaimer Banner
+   Appears on every page per our plan — always visible, never
+   optional, so nobody mistakes this for an official government
+   site.
+   ----------------------------------------------------------- */
+.disclaimer-banner {
+  background-color: var(--color-banner-bg);
+  color: var(--color-banner-text);
+  font-size: var(--fs-sm);
   text-align: center;
-  background-color: #12283F;
-  border-radius: 16px;
-  padding: 40px 28px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  padding: var(--space-2) var(--space-4);
+  border-bottom: 1px solid var(--color-border);
 }
 
-h1 {
-  font-size: 1.75rem;
-  margin-bottom: 16px;
-  color: #FFB347; /* warm amber accent, distinct from NYPD blue/gold */
+.disclaimer-banner a {
+  color: var(--color-banner-text);
+  text-decoration: underline;
 }
 
-p {
-  font-size: 1.05rem;
-  line-height: 1.6;
-  margin-bottom: 12px;
+
+/* -----------------------------------------------------------
+   COMPONENT: Card
+   A raised surface used to group related content — the base
+   building block for most of the site's pages.
+   ----------------------------------------------------------- */
+.card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-6) var(--space-5);
 }
 
-.small {
-  font-size: 0.85rem;
-  color: #9FB0C3;
+.card--center {
+  text-align: center;
+  max-width: 480px;
+}
+
+
+/* -----------------------------------------------------------
+   COMPONENT: Buttons
+   .btn is the shared base. Add .btn-primary or .btn-secondary
+   for the specific style. Every button meets the 44px minimum
+   tap-target height for easy use on a phone.
+   ----------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--tap-target);
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-sm);
+  border: 2px solid transparent;
+  font-size: var(--fs-base);
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.btn-primary {
+  background-color: var(--color-accent);
+  color: #1A1200; /* dark text on the light amber button for strong contrast */
+}
+.btn-primary:hover {
+  background-color: var(--color-accent-dark);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+.btn-secondary:hover {
+  background-color: var(--color-surface-alt);
 }

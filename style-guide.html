@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NYC Protect — Style Guide (internal reference)</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <div class="disclaimer-banner">
+    This is an internal reference page for building the site — not a public page. NYC Protect is independent and not affiliated with NYPD, NYC, or NYS.
+  </div>
+
+  <div class="container stack" style="padding-top: 32px; padding-bottom: 64px;">
+
+    <div>
+      <h1>NYC Protect Style Guide</h1>
+      <p class="text-muted">This page isn't part of the public site — it's our cheat sheet. Every piece below is a reusable building block. When we build real pages later, we'll reuse these exact classes instead of inventing new styles each time.</p>
+    </div>
+
+    <!-- COLORS -->
+    <div class="card">
+      <h2>Colors</h2>
+      <p class="text-muted">Deep navy + warm amber. Calm and trustworthy, deliberately different from NYPD blue-and-gold.</p>
+      <div class="stack">
+        <div><span class="text-muted">Background</span> — <code>--color-bg</code> #0B1B2B</div>
+        <div><span class="text-muted">Surface (cards)</span> — <code>--color-surface</code> #12283F</div>
+        <div><span class="text-muted">Accent (amber)</span> — <code>--color-accent</code> #FFB347</div>
+        <div><span class="text-muted">Text</span> — <code>--color-text</code> #F4F6F8</div>
+      </div>
+    </div>
+
+    <!-- TYPOGRAPHY -->
+    <div class="card stack">
+      <h2>Typography</h2>
+      <h1>Heading 1 — page titles</h1>
+      <h2>Heading 2 — section titles</h2>
+      <h3>Heading 3 — sub-section titles</h3>
+      <p>Body paragraph text looks like this. It should stay easy to read at a glance, even for someone who isn't comfortable with computers — generous line spacing, no tiny fonts.</p>
+      <p class="text-muted">Muted/small text, used for captions, footnotes, and "last verified" stamps.</p>
+    </div>
+
+    <!-- BUTTONS -->
+    <div class="card stack">
+      <h2>Buttons</h2>
+      <p class="text-muted">Every button is at least 44px tall — big enough to comfortably tap on a phone.</p>
+      <div class="stack">
+        <a href="#" class="btn btn-primary">Primary Button</a>
+        <a href="#" class="btn btn-secondary">Secondary Button</a>
+      </div>
+    </div>
+
+    <!-- CARD -->
+    <div class="card">
+      <h2>Card</h2>
+      <p>This box you're reading right now <em>is</em> a card — a raised surface used to group related content. Most of the site's content will live inside cards like this one.</p>
+    </div>
+
+    <!-- DISCLAIMER BANNER -->
+    <div class="card">
+      <h2>Disclaimer Banner</h2>
+      <p class="text-muted">The strip at the very top of this page is the disclaimer banner. It will appear on every page of the real site, unchanged, so independence from NYPD/NYC/NYS is always visible.</p>
+    </div>
+
+  </div>
+
+</body>
+</html>
