@@ -132,6 +132,15 @@ p {
   font-size: var(--fs-sm);
 }
 
+/* A plain-language bulleted list for article-style content pages
+   (About, Legal Concepts, FAQ answers, etc). */
+.content-list {
+  padding-left: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
 a {
   color: var(--color-accent);
 }
