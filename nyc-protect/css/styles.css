@@ -1,0 +1,54 @@
+/* ===========================================
+   NYC Protect — Step 1 starter styles
+   This file controls how the page LOOKS.
+   =========================================== */
+
+/* Reset a few browser defaults so all browsers start from the same baseline */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  /* System font stack: uses the clean native font already on the
+     user's device (fast, accessible, no downloads needed) */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  /* A deep navy background — trustworthy, calm, NYC-at-night feeling */
+  background-color: #0B1B2B;
+  color: #F4F6F8;
+
+  /* Center the card both vertically and horizontally, on any screen size */
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px; /* breathing room on small phone screens */
+}
+
+.hello-card {
+  max-width: 480px;
+  text-align: center;
+  background-color: #12283F;
+  border-radius: 16px;
+  padding: 40px 28px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+h1 {
+  font-size: 1.75rem;
+  margin-bottom: 16px;
+  color: #FFB347; /* warm amber accent, distinct from NYPD blue/gold */
+}
+
+p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.small {
+  font-size: 0.85rem;
+  color: #9FB0C3;
+}
