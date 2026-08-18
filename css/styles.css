@@ -572,3 +572,62 @@ main {
 .resource-item__meta {
   margin-bottom: 0;
 }
+
+
+/* -----------------------------------------------------------
+   COMPONENT: Roadmap Stepper
+   A vertical, connected line of numbered steps — a subtle nod
+   to a subway map line, one of our "NYC-inspired without looking
+   like an NYC government website" ideas from the original plan.
+   ----------------------------------------------------------- */
+.roadmap-step {
+  display: flex;
+  gap: var(--space-5);
+  padding-bottom: var(--space-7);
+}
+.roadmap-step:last-child {
+  padding-bottom: 0;
+}
+
+.roadmap-step__marker {
+  position: relative;
+  flex: 0 0 48px;
+}
+.roadmap-step__number {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  color: #1A1200;
+  font-weight: 700;
+  font-size: var(--fs-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+/* The connecting "subway line" between this step's circle and
+   the next one. Hidden on the last step, since there's nothing
+   after it to connect to. */
+.roadmap-step__marker::after {
+  content: "";
+  position: absolute;
+  top: 48px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  bottom: calc(-1 * var(--space-7));
+  background-color: var(--color-border);
+}
+.roadmap-step:last-child .roadmap-step__marker::after {
+  display: none;
+}
+
+.roadmap-step__content {
+  flex: 1;
+  padding-top: var(--space-1);
+}
+.roadmap-step__content h2 {
+  margin-bottom: var(--space-2);
+}
