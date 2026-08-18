@@ -10,17 +10,32 @@
 
   <div id="site-header"></div>
 
-  <main class="page-center">
-    <div class="card card--center stack">
-      <h1>ZIP Code Resource Finder</h1>
-      <p>This page is coming soon — we'll build it together in Step 12 of our development plan.</p>
-      <p class="text-muted">Want to jump ahead? Just tell me and we can reorder the plan.</p>
-      <a href="index.html" class="btn btn-secondary">Back to Home</a>
-    </div>
+  <main>
+    <section class="section">
+      <div class="container stack" style="max-width: 640px;">
+
+        <div class="stack">
+          <h1>ZIP Code Resource Finder</h1>
+          <p>Enter your ZIP code to confirm your borough and find the right official contact. Firearms licensing itself is handled by one centralized NYPD office for the whole city — so you'll always get the same correct office, plus a link to your local precinct for anything else.</p>
+          <p class="text-muted">Your ZIP code stays on your device. It's never sent to us or anyone else.</p>
+        </div>
+
+        <form id="finder-form" class="card stack">
+          <label for="finder-zip"><strong>Your ZIP code</strong></label>
+          <input type="text" id="finder-zip" inputmode="numeric" pattern="[0-9]*" maxlength="5" placeholder="e.g. 10001" required>
+          <button type="submit" class="btn btn-primary">Find My Resources</button>
+        </form>
+
+        <div id="finder-results" hidden></div>
+
+      </div>
+    </section>
   </main>
 
   <div id="site-footer"></div>
 
   <script src="js/main.js"></script>
+  <script src="data/zip-resources.js"></script>
+  <script src="js/resource-finder.js"></script>
 </body>
 </html>

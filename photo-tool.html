@@ -3,24 +3,55 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NYC Protect — Passport Photo Tool</title>
+  <title>NYC Protect — Photo Tool</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
   <div id="site-header"></div>
 
-  <main class="page-center">
-    <div class="card card--center stack">
-      <h1>Passport Photo Tool</h1>
-      <p>This page is coming soon — we'll build it together in Step 13 of our development plan.</p>
-      <p class="text-muted">Want to jump ahead? Just tell me and we can reorder the plan.</p>
-      <a href="index.html" class="btn btn-secondary">Back to Home</a>
-    </div>
+  <main>
+    <section class="section">
+      <div class="container stack" style="max-width: 480px;">
+
+        <div class="stack">
+          <h1>Photo Tool</h1>
+          <p>Prepare a chest-up photo for your application. Everything happens right here in your browser — your photo is never uploaded or sent anywhere.</p>
+        </div>
+
+        <div id="photo-empty-state" class="card stack" style="text-align:center;">
+          <p>Choose a photo from your device, or take a new one.</p>
+          <label for="photo-input" class="btn btn-primary" style="justify-self:center;">Choose or Take a Photo</label>
+          <input type="file" id="photo-input" accept="image/*" capture="user">
+        </div>
+
+        <div id="photo-editor" class="card stack" hidden>
+          <div class="photo-canvas-wrap">
+            <canvas id="photo-canvas" width="600" height="600"></canvas>
+          </div>
+
+          <div class="photo-controls">
+            <label for="zoom-slider" class="text-muted">Drag the photo to reposition · use the slider to zoom</label>
+            <input type="range" id="zoom-slider" min="1" max="3" step="0.01" value="1">
+          </div>
+
+          <div class="photo-actions">
+            <label for="photo-input" class="btn btn-secondary">Choose a Different Photo</label>
+            <button id="download-photo" class="btn btn-primary" type="button">Download Photo</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <p class="text-muted">This tool crops to a square, matching the general 1½ × 1½ inch chest-up format referenced in the NYPD's application instructions. Always confirm the exact current photo requirements directly with the NYPD before submitting.</p>
+        </div>
+
+      </div>
+    </section>
   </main>
 
   <div id="site-footer"></div>
 
   <script src="js/main.js"></script>
+  <script src="js/photo-tool.js"></script>
 </body>
 </html>

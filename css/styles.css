@@ -807,3 +807,56 @@ input[type="tel"]::placeholder {
 .fee-item--total .fee-item__amount {
   color: var(--color-accent);
 }
+
+
+/* -----------------------------------------------------------
+   COMPONENT: Photo Tool
+   ----------------------------------------------------------- */
+.photo-canvas-wrap {
+  display: flex;
+  justify-content: center;
+}
+#photo-canvas {
+  width: 100%;
+  max-width: 320px;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-sm);
+  border: 2px solid var(--color-accent);
+  background-color: var(--color-surface-alt);
+  cursor: grab;
+  /* Prevents the browser from also scrolling the page while a
+     visitor drags on the canvas with a finger on mobile. */
+  touch-action: none;
+}
+#photo-canvas:active {
+  cursor: grabbing;
+}
+
+.photo-controls {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  max-width: 320px;
+  margin: 0 auto;
+}
+.photo-controls input[type="range"] {
+  width: 100%;
+  accent-color: var(--color-accent);
+}
+
+.photo-actions {
+  display: flex;
+  gap: var(--space-3);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Hides the ugly native file input and lets our styled label
+   act as the button instead. */
+#photo-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+}
