@@ -10,7 +10,7 @@
 
   <div id="site-header"></div>
 
-  <main class="page-center">
+  <main id="main-content" class="page-center">
     <div class="container" style="max-width: 560px;">
 
       <div class="stack" style="margin-bottom: var(--space-5); text-align:center;">
@@ -22,13 +22,13 @@
       <div id="wizard-card" class="card stack">
 
         <div>
-          <p id="wizard-progress-text" class="wizard-progress-text text-muted">Question 1 of 4</p>
+          <p id="wizard-progress-text" class="wizard-progress-text text-muted" aria-live="polite">Question 1 of 4</p>
           <div class="progress-bar"><div id="wizard-progress-fill" class="progress-bar__fill"></div></div>
         </div>
 
         <!-- Step 1 -->
-        <div class="wizard-step" data-step="1">
-          <h2>Are you a New York City resident?</h2>
+        <fieldset class="wizard-step" data-step="1">
+          <legend class="wizard-legend">Are you a New York City resident?</legend>
           <label class="wizard-option">
             <input type="radio" name="resident" value="yes">
             Yes, I live in NYC
@@ -37,11 +37,11 @@
             <input type="radio" name="resident" value="no">
             No, I live elsewhere
           </label>
-        </div>
+        </fieldset>
 
         <!-- Step 2 -->
-        <div class="wizard-step" data-step="2" hidden>
-          <h2>Is this your first license, or a renewal?</h2>
+        <fieldset class="wizard-step" data-step="2" hidden>
+          <legend class="wizard-legend">Is this your first license, or a renewal?</legend>
           <label class="wizard-option">
             <input type="radio" name="applicationType" value="first-time">
             This is my first time applying
@@ -50,11 +50,11 @@
             <input type="radio" name="applicationType" value="renewal">
             I'm renewing an existing license
           </label>
-        </div>
+        </fieldset>
 
         <!-- Step 3 -->
-        <div class="wizard-step" data-step="3" hidden>
-          <h2>Which are you applying for?</h2>
+        <fieldset class="wizard-step" data-step="3" hidden>
+          <legend class="wizard-legend">Which are you applying for?</legend>
           <label class="wizard-option">
             <input type="radio" name="licenseType" value="premises">
             Handgun — Premises License
@@ -71,16 +71,17 @@
             <input type="radio" name="licenseType" value="not-sure">
             I'm not sure yet
           </label>
-        </div>
+        </fieldset>
 
         <!-- Step 4 -->
         <div class="wizard-step" data-step="4" hidden>
           <h2>What's your ZIP code? <span class="text-muted">(optional)</span></h2>
           <p class="text-muted">This stays on your device — we'll use it later to point you to local resources.</p>
+          <label for="wizard-zip" class="text-muted">ZIP code</label>
           <input type="text" id="wizard-zip" inputmode="numeric" pattern="[0-9]*" maxlength="5" placeholder="e.g. 10001">
         </div>
 
-        <p id="wizard-validation-message" class="wizard-validation-message"></p>
+        <p id="wizard-validation-message" class="wizard-validation-message" aria-live="polite"></p>
 
         <div class="wizard-nav">
           <button id="wizard-back" class="btn btn-secondary" type="button">Back</button>
@@ -89,7 +90,7 @@
       </div>
 
       <!-- RESULTS (filled in by js/wizard.js) -->
-      <div id="wizard-results" class="card stack" hidden></div>
+      <div id="wizard-results" class="card stack" aria-live="polite" hidden></div>
 
     </div>
   </main>

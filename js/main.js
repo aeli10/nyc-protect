@@ -28,6 +28,7 @@
    =========================================================== */
 
 const SITE_HEADER_HTML = `
+  <a href="#main-content" class="skip-link">Skip to main content</a>
   <div class="disclaimer-banner">
     NYC Protect is an independent educational resource. We are not affiliated with the NYPD, New York City, or New York State.
   </div>

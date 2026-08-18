@@ -860,3 +860,68 @@ input[type="tel"]::placeholder {
   overflow: hidden;
   opacity: 0;
 }
+
+
+/* -----------------------------------------------------------
+   ACCESSIBILITY: Skip Link
+   Invisible until a keyboard user tabs to it, then jumps
+   straight past the repeated banner/nav to the actual page
+   content — standard practice on every accessible site.
+   ----------------------------------------------------------- */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: var(--space-4);
+  background-color: var(--color-accent);
+  color: #1A1200;
+  font-weight: 700;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-sm);
+  z-index: 1000;
+  transition: top 0.15s ease;
+}
+.skip-link:focus {
+  top: var(--space-4);
+}
+
+
+/* -----------------------------------------------------------
+   ACCESSIBILITY: Fieldset / Legend reset
+   <fieldset> and <legend> are the correct, accessible way to
+   group a set of radio buttons under one shared question — a
+   screen reader announces the legend as part of every option in
+   the group. We reset the browser's default border/padding so
+   they look exactly like our existing .card and h2 styles.
+   ----------------------------------------------------------- */
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+.wizard-legend {
+  color: var(--color-accent);
+  font-size: var(--fs-xl);
+  font-weight: 700;
+  line-height: 1.25;
+  padding: 0;
+  margin-bottom: var(--space-4);
+}
+
+
+/* -----------------------------------------------------------
+   ACCESSIBILITY: Reduced Motion
+   Some visitors get real discomfort (dizziness, nausea) from
+   animation. This tells the browser to skip our smooth-scroll
+   and transition effects for anyone whose operating system has
+   "reduce motion" turned on — a setting we should always respect.
+   ----------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

@@ -10,7 +10,7 @@
 
   <div id="site-header"></div>
 
-  <main>
+  <main id="main-content">
     <section class="section">
       <div class="container stack" style="max-width: 640px;">
 
@@ -23,8 +23,8 @@
           <p><strong>This is an estimate, not a bill.</strong> Fees can change, and your specific situation may involve additional costs not listed here (like a safety course, if your county requires one). Always confirm the exact current amount on the official NYPD portal before paying.</p>
         </div>
 
-        <div class="card stack">
-          <h2>What are you applying for?</h2>
+        <fieldset class="card stack">
+          <legend class="wizard-legend">What are you applying for?</legend>
 
           <label class="wizard-option">
             <input type="radio" name="fee-license-type" value="premises">
@@ -42,9 +42,9 @@
             <input type="radio" name="fee-license-type" value="renewal">
             Handgun License Renewal
           </label>
-        </div>
+        </fieldset>
 
-        <div id="fee-results" class="card stack"><!-- Filled in by js/fee-calculator.js --></div>
+        <div id="fee-results" class="card stack" aria-live="polite"><!-- Filled in by js/fee-calculator.js --></div>
 
       </div>
     </section>

@@ -28,21 +28,21 @@ const OFFICIAL_SOURCES = [
     title: "NYPD License Division — Firearms Licensing",
     url: "https://www.nyc.gov/site/nypd/services/law-enforcement/permits-licenses-firearms.page",
     note: "The main official overview of NYC handgun licenses and rifle/shotgun permits.",
-    lastVerified: "2026-08-17"
+    lastVerified: "2026-08-18"
   },
   {
     category: "NYPD — NYC Firearms Licensing",
     title: "NYPD Online Licensing Portal",
     url: "https://licensing.nypdonline.org/new-app-instruction/",
     note: "Where applications are actually filed. Paper applications have not been accepted since 2018.",
-    lastVerified: "2026-08-17"
+    lastVerified: "2026-08-18"
   },
   {
     category: "NYPD — NYC Firearms Licensing",
     title: "NYC311 — Gun Permit",
     url: "https://portal.311.nyc.gov/article/?kanumber=KA-01683",
     note: "A plain-language government summary of the gun permit process, useful as a quick cross-check.",
-    lastVerified: "2026-08-17"
+    lastVerified: "2026-08-18"
   },
 
   // --- New York State ---
@@ -51,21 +51,21 @@ const OFFICIAL_SOURCES = [
     title: "NYS Police — Pistol Permit Recertification",
     url: "https://firearms.troopers.ny.gov/pprecert/",
     note: "The state system used outside NYC — NYC residents renew through the NYPD instead, not here.",
-    lastVerified: "2026-08-17"
+    lastVerified: "2026-08-18"
   },
   {
     category: "New York State",
     title: "NY.gov Gun Safety — Resources for Gun Owners",
     url: "https://gunsafety.ny.gov/resources-gun-owners",
     note: "State-level safety and storage resources.",
-    lastVerified: "2026-08-17"
+    lastVerified: "2026-08-18"
   },
   {
     category: "New York State",
     title: "NY.gov Gun Safety — Concealed Carry Law FAQ",
     url: "https://gunsafety.ny.gov/frequently-asked-questions-new-concealed-carry-law",
     note: "Official FAQ on the Concealed Carry Improvement Act (CCIA), including sensitive locations.",
-    lastVerified: "2026-08-17"
+    lastVerified: "2026-08-18"
   },
 
   // --- Official Statutes (the actual legal text) ---
@@ -74,14 +74,14 @@ const OFFICIAL_SOURCES = [
     title: "New York Penal Law § 400.00",
     url: "https://www.nysenate.gov/legislation/laws/PEN/400.00",
     note: "The statute governing firearms license eligibility, including the \"good moral character\" requirement.",
-    lastVerified: "2026-08-17"
+    lastVerified: "2026-08-18"
   },
   {
     category: "Official Statutes",
     title: "New York Penal Law § 265.45",
     url: "https://www.nysenate.gov/legislation/laws/PEN/265.45",
     note: "The statute governing safe storage of firearms.",
-    lastVerified: "2026-08-17"
+    lastVerified: "2026-08-18"
   }
 
 ];
