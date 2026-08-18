@@ -10,17 +10,39 @@
 
   <div id="site-header"></div>
 
-  <main class="page-center">
-    <div class="card card--center stack">
-      <h1>Document Checklist</h1>
-      <p>This page is coming soon — we'll build it together in Step 9 of our development plan.</p>
-      <p class="text-muted">Want to jump ahead? Just tell me and we can reorder the plan.</p>
-      <a href="index.html" class="btn btn-secondary">Back to Home</a>
-    </div>
+  <main>
+    <section class="section">
+      <div class="container stack">
+
+        <div class="stack">
+          <h1>Document Checklist</h1>
+          <p>Check off items as you gather them. This list is a general starting point sourced from the NYPD's own application instructions — your specific situation may not need every item, and items marked "If applicable" only apply in certain cases.</p>
+          <p class="text-muted">Your progress is saved only in this browser, on this device. It is never sent to us or stored anywhere else — clearing your browser data will also clear this checklist.</p>
+        </div>
+
+        <div class="card stack">
+          <div id="progress-label" class="text-muted">0 of 0 items checked</div>
+          <div class="progress-bar"><div id="progress-fill" class="progress-bar__fill"></div></div>
+        </div>
+
+        <div id="checklist-container"><!-- Filled in automatically by js/checklist.js --></div>
+
+        <div class="hero__actions" style="justify-content:flex-start;">
+          <button id="reset-checklist" class="btn btn-secondary" type="button">Reset Checklist</button>
+        </div>
+
+        <div class="card">
+          <p class="text-muted">Official source: <a href="https://www.nyc.gov/html/nypd/downloads/pdf/permits/HandGunLicenseApplicationFormsComplete.pdf" target="_blank" rel="noopener">NYPD Handgun License Application Instructions (PDF)</a> · Last verified: August 17, 2026. Always confirm exactly what your application needs directly with the NYPD.</p>
+        </div>
+
+      </div>
+    </section>
   </main>
 
   <div id="site-footer"></div>
 
   <script src="js/main.js"></script>
+  <script src="data/checklist-items.js"></script>
+  <script src="js/checklist.js"></script>
 </body>
 </html>
