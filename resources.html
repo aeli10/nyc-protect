@@ -3,24 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NYC Protect — Official NYPD/NYS Resources</title>
+  <title>NYC Protect — Official Resources</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
   <div id="site-header"></div>
 
-  <main class="page-center">
-    <div class="card card--center stack">
-      <h1>Official NYPD/NYS Resources</h1>
-      <p>This page is coming soon — we'll build it together in Step 7 of our development plan.</p>
-      <p class="text-muted">Want to jump ahead? Just tell me and we can reorder the plan.</p>
-      <a href="index.html" class="btn btn-secondary">Back to Home</a>
-    </div>
+  <main>
+    <section class="section">
+      <div class="container stack">
+
+        <div class="stack">
+          <h1>Official Resources</h1>
+          <p>Every official NYPD and New York State source referenced anywhere on this site, gathered in one place. When in doubt, these are the sources that actually control — not us.</p>
+        </div>
+
+        <div id="resource-list"><!-- Filled in automatically by js/resources.js --></div>
+
+        <div class="card">
+          <h2>How This List Stays Accurate</h2>
+          <p class="text-muted">Every link and date on this page comes from a single shared file (<code>data/sources.js</code>) instead of being typed by hand into this page. That means keeping this list accurate is a matter of updating one file, and every date you see reflects when that specific source was actually checked.</p>
+        </div>
+
+      </div>
+    </section>
   </main>
 
   <div id="site-footer"></div>
 
   <script src="js/main.js"></script>
+  <script src="data/sources.js"></script>
+  <script src="js/resources.js"></script>
 </body>
 </html>

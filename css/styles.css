@@ -529,3 +529,46 @@ main {
 .resource-callout li {
   margin-bottom: var(--space-2);
 }
+
+
+/* -----------------------------------------------------------
+   COMPONENT: Resource List
+   The grouped, categorized link library on the Official
+   Resources page — rendered by js/resources.js from
+   data/sources.js, not hand-written in the HTML.
+   ----------------------------------------------------------- */
+.resource-group {
+  margin-bottom: var(--space-6);
+}
+.resource-group h2 {
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--space-2);
+}
+.resource-items {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+.resource-item {
+  padding: var(--space-4) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+.resource-item:last-child {
+  border-bottom: none;
+}
+.resource-item__title {
+  font-size: var(--fs-lg);
+  font-weight: 600;
+  text-decoration: none;
+}
+.resource-item__title:hover {
+  text-decoration: underline;
+}
+.resource-item__note {
+  color: var(--color-text-muted);
+  margin-top: var(--space-1);
+  margin-bottom: var(--space-1);
+}
+.resource-item__meta {
+  margin-bottom: 0;
+}
