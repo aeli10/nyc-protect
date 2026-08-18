@@ -10,17 +10,50 @@
 
   <div id="site-header"></div>
 
-  <main class="page-center">
-    <div class="card card--center stack">
-      <h1>Government Fee Calculator</h1>
-      <p>This page is coming soon — we'll build it together in Step 11 of our development plan.</p>
-      <p class="text-muted">Want to jump ahead? Just tell me and we can reorder the plan.</p>
-      <a href="index.html" class="btn btn-secondary">Back to Home</a>
-    </div>
+  <main>
+    <section class="section">
+      <div class="container stack" style="max-width: 640px;">
+
+        <div class="stack">
+          <h1>Government Fee Calculator</h1>
+          <p>Select your situation to see an itemized estimate of official NYPD fees. These are government fees, paid directly to the NYPD through their official portal — NYC Protect never collects, processes, or receives any payment.</p>
+        </div>
+
+        <div class="card resource-callout">
+          <p><strong>This is an estimate, not a bill.</strong> Fees can change, and your specific situation may involve additional costs not listed here (like a safety course, if your county requires one). Always confirm the exact current amount on the official NYPD portal before paying.</p>
+        </div>
+
+        <div class="card stack">
+          <h2>What are you applying for?</h2>
+
+          <label class="wizard-option">
+            <input type="radio" name="fee-license-type" value="premises">
+            Handgun — Premises License (new application)
+          </label>
+          <label class="wizard-option">
+            <input type="radio" name="fee-license-type" value="carry">
+            Handgun — Carry License (new application)
+          </label>
+          <label class="wizard-option">
+            <input type="radio" name="fee-license-type" value="rifle-shotgun">
+            Rifle / Shotgun Permit (new application)
+          </label>
+          <label class="wizard-option">
+            <input type="radio" name="fee-license-type" value="renewal">
+            Handgun License Renewal
+          </label>
+        </div>
+
+        <div id="fee-results" class="card stack"><!-- Filled in by js/fee-calculator.js --></div>
+
+      </div>
+    </section>
   </main>
 
   <div id="site-footer"></div>
 
   <script src="js/main.js"></script>
+  <script src="data/fees.js"></script>
+  <script src="js/fee-calculator.js"></script>
 </body>
 </html>
