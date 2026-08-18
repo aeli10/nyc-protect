@@ -135,8 +135,43 @@ function handleResetClick() {
   renderChecklist();
 }
 
+/* ---- Light personalization from the Start Here wizard ----
+   The wizard (js/wizard.js) saves its answers under the key
+   "nycprotect_wizard_v1". Since localStorage is shared across
+   every page on the same site — not just reloads of one page —
+   this page can read those same answers and use them to show a
+   relevant note. We never HIDE any checklist item this way,
+   only highlight one that's likely to matter. */
+function showWizardPersonalizationNote() {
+  const noteBox = document.getElementById("wizard-personalization-note");
+  if (!noteBox) {
+    return;
+  }
+
+  const savedAnswers = localStorage.getItem("nycprotect_wizard_v1");
+  if (!savedAnswers) {
+    return; // They haven't done the Start Here questionnaire — say nothing.
+  }
+
+  let answers;
+  try {
+    answers = JSON.parse(savedAnswers);
+  } catch (error) {
+    return;
+  }
+
+  if (answers.licenseType === "carry") {
+    noteBox.innerHTML = `<p>Based on your <a href="start-here.html">Start Here</a> answers, you're applying for a <strong>Carry License</strong> — pay extra attention to the "If Applying for a Carry License" section below.</p>`;
+    noteBox.hidden = false;
+  } else if (answers.licenseType === "rifle-shotgun") {
+    noteBox.innerHTML = `<p>Based on your <a href="start-here.html">Start Here</a> answers, you're applying for a <strong>Rifle/Shotgun Permit</strong> — this list is written primarily for handgun licenses, so double-check requirements for this permit type directly with the NYPD.</p>`;
+    noteBox.hidden = false;
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   renderChecklist();
+  showWizardPersonalizationNote();
   const resetButton = document.getElementById("reset-checklist");
   if (resetButton) {
     resetButton.addEventListener("click", handleResetClick);

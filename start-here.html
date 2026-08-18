@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NYC Protect — Start Here Questionnaire</title>
+  <title>NYC Protect — Start Here</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -11,16 +11,92 @@
   <div id="site-header"></div>
 
   <main class="page-center">
-    <div class="card card--center stack">
-      <h1>Start Here Questionnaire</h1>
-      <p>This page is coming soon — we'll build it together in Step 10 of our development plan.</p>
-      <p class="text-muted">Want to jump ahead? Just tell me and we can reorder the plan.</p>
-      <a href="index.html" class="btn btn-secondary">Back to Home</a>
+    <div class="container" style="max-width: 560px;">
+
+      <div class="stack" style="margin-bottom: var(--space-5); text-align:center;">
+        <h1>Start Here</h1>
+        <p class="text-muted">Four quick questions. Nothing you enter leaves your device.</p>
+      </div>
+
+      <!-- THE WIZARD -->
+      <div id="wizard-card" class="card stack">
+
+        <div>
+          <p id="wizard-progress-text" class="wizard-progress-text text-muted">Question 1 of 4</p>
+          <div class="progress-bar"><div id="wizard-progress-fill" class="progress-bar__fill"></div></div>
+        </div>
+
+        <!-- Step 1 -->
+        <div class="wizard-step" data-step="1">
+          <h2>Are you a New York City resident?</h2>
+          <label class="wizard-option">
+            <input type="radio" name="resident" value="yes">
+            Yes, I live in NYC
+          </label>
+          <label class="wizard-option">
+            <input type="radio" name="resident" value="no">
+            No, I live elsewhere
+          </label>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="wizard-step" data-step="2" hidden>
+          <h2>Is this your first license, or a renewal?</h2>
+          <label class="wizard-option">
+            <input type="radio" name="applicationType" value="first-time">
+            This is my first time applying
+          </label>
+          <label class="wizard-option">
+            <input type="radio" name="applicationType" value="renewal">
+            I'm renewing an existing license
+          </label>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="wizard-step" data-step="3" hidden>
+          <h2>Which are you applying for?</h2>
+          <label class="wizard-option">
+            <input type="radio" name="licenseType" value="premises">
+            Handgun — Premises License
+          </label>
+          <label class="wizard-option">
+            <input type="radio" name="licenseType" value="carry">
+            Handgun — Carry License
+          </label>
+          <label class="wizard-option">
+            <input type="radio" name="licenseType" value="rifle-shotgun">
+            Rifle / Shotgun Permit
+          </label>
+          <label class="wizard-option">
+            <input type="radio" name="licenseType" value="not-sure">
+            I'm not sure yet
+          </label>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="wizard-step" data-step="4" hidden>
+          <h2>What's your ZIP code? <span class="text-muted">(optional)</span></h2>
+          <p class="text-muted">This stays on your device — we'll use it later to point you to local resources.</p>
+          <input type="text" id="wizard-zip" inputmode="numeric" pattern="[0-9]*" maxlength="5" placeholder="e.g. 10001">
+        </div>
+
+        <p id="wizard-validation-message" class="wizard-validation-message"></p>
+
+        <div class="wizard-nav">
+          <button id="wizard-back" class="btn btn-secondary" type="button">Back</button>
+          <button id="wizard-next" class="btn btn-primary" type="button">Next</button>
+        </div>
+      </div>
+
+      <!-- RESULTS (filled in by js/wizard.js) -->
+      <div id="wizard-results" class="card stack" hidden></div>
+
     </div>
   </main>
 
   <div id="site-footer"></div>
 
   <script src="js/main.js"></script>
+  <script src="js/wizard.js"></script>
 </body>
 </html>

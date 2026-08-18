@@ -699,3 +699,77 @@ main {
   padding: 0 var(--space-2);
   margin-right: var(--space-2);
 }
+
+
+/* -----------------------------------------------------------
+   COMPONENT: Form Inputs
+   Our first real text input styling — used by the wizard's ZIP
+   code field now, and reusable later by the Fee Calculator and
+   Resource Finder.
+   ----------------------------------------------------------- */
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="number"] {
+  width: 100%;
+  min-height: var(--tap-target);
+  padding: var(--space-3);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface-alt);
+  color: var(--color-text);
+  font-size: var(--fs-base);
+  font-family: var(--font-base);
+}
+input[type="text"]::placeholder,
+input[type="tel"]::placeholder {
+  color: var(--color-text-muted);
+}
+
+
+/* -----------------------------------------------------------
+   COMPONENT: Wizard
+   Each question is one "step," shown one at a time by
+   js/wizard.js. Options look like selectable cards rather than
+   plain radio buttons — easier to read and tap, especially on a
+   phone. ":has()" lets us highlight the whole card when its
+   radio button becomes checked, without any extra JavaScript.
+   ----------------------------------------------------------- */
+.wizard-progress-text {
+  margin-bottom: var(--space-2);
+}
+
+.wizard-option {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-3);
+  cursor: pointer;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+.wizard-option:has(input:checked) {
+  border-color: var(--color-accent);
+  background-color: var(--color-surface-alt);
+}
+.wizard-option input[type="radio"] {
+  accent-color: var(--color-accent);
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.wizard-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}
+
+.wizard-validation-message {
+  color: var(--color-accent);
+  font-size: var(--fs-sm);
+  margin-top: var(--space-2);
+}
