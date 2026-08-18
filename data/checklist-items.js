@@ -58,7 +58,14 @@ const CHECKLIST_ITEMS = [
     label: "Proof of business address (a recent utility bill or lease)", conditional: true },
 
   // --- If Applying for a Carry License ---
-  { id: "letter-of-necessity", category: "If Applying for a Carry License",
-    label: "Completed \"Letter of Necessity\" form", conditional: true }
+  // NOTE: the old "Letter of Necessity" (proper cause) requirement
+  // was struck down by the U.S. Supreme Court in NYSRPA v. Bruen
+  // (2022) and no longer appears in the NYPD's current application
+  // instructions. These two items replace it, sourced from the
+  // state's official post-Bruen (CCIA) requirements instead.
+  { id: "carry-training-certificate", category: "If Applying for a Carry License",
+    label: "Certificate of completion for the required firearm safety training course (16-hour classroom + 2-hour live-fire)", conditional: true, note: "Required for carry licenses since September 1, 2022" },
+  { id: "carry-character-references", category: "If Applying for a Carry License",
+    label: "Character references, for your in-person interview", conditional: true }
 
 ];
